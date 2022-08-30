@@ -1,0 +1,24 @@
+.tabers_call button.Mui-selected {
+    background: linear-gradient(121.21deg, #5294FF 7.78%, #1EFF78 118.78%) !important;
+}
+.disable_class{
+    color: #fff;
+    font-size: 12px;
+    background-color: #8D97A0;
+    padding: 2px 8px;
+    display: inline-flex;
+    border-radius: 15px;
+    align-items: center;
+}
+.select_box .MuiOutlinedInput-input {
+    display: flex;
+    align-items: center;
+    border: unset !important;
+    border-radius: unset;
+    box-shadow: unset;
+    outline: unset;
+}
+.tabers_call button.Mui-selected:hover {
+    background: #fff !important;
+    border: 1px solid #2de1a0;
+}
