@@ -1,7 +1,6 @@
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import WalletConnect from "@walletconnect/web3-provider";
 
-require('dotenv').config()
 export const providerOptions = {
     walletlink: {
         package: CoinbaseWalletSDK, // Required

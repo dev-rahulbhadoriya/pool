@@ -94,7 +94,7 @@ export default function RecipeReviewCard() {
   };
   return (
     
-    <Box container className='option_main' sx={{ flexGrow: 1 }}  sx={{ padding: '0px 30px' }}>
+    <Box container className='option_main' sx={{ flexGrow: 1 , padding: '0px 30px' }}>
       <Stack
               direction="row"
               justifyContent="space-between"
