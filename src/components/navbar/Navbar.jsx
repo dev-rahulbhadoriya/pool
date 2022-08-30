@@ -5,7 +5,7 @@ import DialogBox from "../../components/Dialog/Dialogbox";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useEffect, useState } from "react";
-import Walletindex  from "../../wallet/Walletindex"
+import {Walletindex}  from "../../wallet/Walletindex"
 
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);

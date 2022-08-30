@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { DarkModeContextProvider } from "./context/darkModeContext";
+import { Walletindex } from "./wallet/Walletindex";
 
 ReactDOM.render(
   <React.StrictMode>
