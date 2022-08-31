@@ -29,30 +29,18 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link exact activeClassName="active" to='/' to="/" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Option</span>
             </li>
           </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
+          <Link activeClassName="active" to="/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>Pools</span>
             </li>
           </Link>
-          <li>
-              <DashboardIcon className="icon" />
-              <span>Positions</span>
-            </li>
-            <li>
-              <VpnKeyIcon className="icon" />
-              <span>Stake</span>
-            </li>
-            <li>
-              <SwapHorizIcon className="icon" />
-              <span>Swap & Bridge</span>
-            </li>
           </ul>
         <div className="sticky"style={{ float:"left", clear: "both", position: "fixed", bottom: "0"}} >
         <div className="bottom">

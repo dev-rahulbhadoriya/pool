@@ -1,21 +1,17 @@
 import * as React from 'react';
 import "./Options.scss";
 import DatePicker from "../../components/Datepicker/Datepicker";
+import StrikePrices from "../strikeprice/StrikePrice";
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import Skeleton from '@mui/material/Skeleton';
-import Tabs from '@mui/material/Tabs';
+import Tabs ,{ tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import Stack from '@mui/material/Stack';
@@ -25,21 +21,16 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Button from '@mui/material/Button';
-import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Icon from "react-crypto-icons";
-
-
-
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -51,10 +42,6 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-
-
-  
-
 export default function RecipeReviewCard() {
     const [value, setValue] = React.useState(0);
     React.useEffect(()=>{
@@ -85,16 +72,12 @@ export default function RecipeReviewCard() {
     setAuth(event.target.checked);
   };
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
   return (
     
-    <Box container className='option_main' sx={{ flexGrow: 1 , padding: '0px 30px' }}>
+    <Box container  className='option_main' sx={{ flexGrow: 1 , width: '1300px', margin: '0 auto', padding: '0px 30px' }}>
       <Stack
               direction="row"
               justifyContent="space-between"
@@ -159,8 +142,7 @@ export default function RecipeReviewCard() {
               </ToggleButton>
             </ToggleButtonGroup>
           </Box>
-          <Typography paragraph>Strike Price</Typography>
-          <Skeleton variant="text" sx={{ fontSize: '2rem' }} />
+          <StrikePrices/>
           <Stack
               direction="row"
               justifyContent="space-between"
@@ -170,13 +152,27 @@ export default function RecipeReviewCard() {
               <span >Expiration date</span>
               <span >Expires in 6d 2h 38min</span>
               </Stack>
-              <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-              <Tabs  value={value} onChange={handleChange}
-               >
-                <Tab label="Aug 25" />
-                <Tab label="Aug 26" />
-                <Tab label="Aug 30" />
-                <Tab label="Sep 2" />
+             
+            <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: '#f1f1f1' }}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                variant="scrollable"
+                scrollButtons
+                aria-label="visible arrows tabs example"
+                sx={{
+                  [`& .${tabsClasses.scrollButtons}`]: {
+                    '&.Mui-disabled': { opacity: 0.3 },
+                  },
+                }}
+              >
+                <Tab label="Aug 23" />
+                <Tab label="Aug 23" />
+                <Tab label="Aug 23" />
+                <Tab label="Aug 23" />
+                <Tab label="Aug 23" />
+                <Tab label="Aug 23" />
+                <Tab label="Aug 23" />
               </Tabs>
             </Box>
           <DatePicker />
