@@ -42,7 +42,9 @@ const Sidebar = () => {
             </li>
           </Link>
           </ul>
-        <div className="sticky"style={{ float:"left", clear: "both", position: "fixed", bottom: "0"}} >
+       
+      </div>
+      <div className="sticky"style={{ float:"left", clear: "both", position: "fixed", bottom: "0"}} >
         <div className="bottom">
         <Box
             sx={{
@@ -56,7 +58,6 @@ const Sidebar = () => {
           >
         <ButtonGroup fullWidth size="small" aria-label="small button group">
           <Button><WbSunnyIcon className="icon" 
-            className=""
             onClick={() => dispatch({ type: "LIGHT" })}
             />
             </Button>
@@ -68,8 +69,6 @@ const Sidebar = () => {
         </Box>
       </div>
         </div>
-      </div>
-      
     </div>
   );
 };
