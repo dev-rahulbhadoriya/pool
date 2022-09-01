@@ -4,10 +4,12 @@ import Stack from '@mui/material/Stack';
 import DialogBox from "../../components/Dialog/Dialogbox";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext, useEffect, useState } from "react";
-import {Walletindex}  from "../../wallet/Walletindex"
+import { useContext, } from "react";
+import LoginIcon from "@mui/icons-material/Login";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import {shortenAddress} from "../../utils/stylish"
 
-const Navbar = () => {
+const Navbar = ({connected, address, connectWallet, disconnectWallet}) => {
   const { dispatch } = useContext(DarkModeContext);
 
   return (
@@ -20,7 +22,28 @@ const Navbar = () => {
           </Button> */}
             <DialogBox />
             <div>
-              <Walletindex/>
+            {!address ? (
+        <Button
+          variant="contained"
+          className="connect_btn "
+          startIcon={<AccountBalanceWalletIcon />}
+          onClick={connectWallet}
+        >
+          Connect Wallet  
+        </Button>
+      ) : (
+        <div>
+          <ButtonGroup
+            className="wallet_btn_disconnect"
+            aria-label="outlined button group"
+          >
+            <Button variant="text"> {shortenAddress(address)}</Button>
+            <Button variant="text" onClick={disconnectWallet}>
+              <LoginIcon />
+            </Button>
+          </ButtonGroup>
+        </div>
+      )}
             </div>
           </Stack>
         </div>

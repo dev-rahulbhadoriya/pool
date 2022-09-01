@@ -2,13 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { DarkModeContextProvider } from "./context/darkModeContext";
-import { Walletindex } from "./wallet/Walletindex";
+
+import { Provider } from "react-redux";
+import store from "./utils/Rootstore/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DarkModeContextProvider>
-      <App />
-    </DarkModeContextProvider>
+    <Provider store={store}>
+      <DarkModeContextProvider>
+        <App />
+      </DarkModeContextProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

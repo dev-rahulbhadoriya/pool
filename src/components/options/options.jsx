@@ -42,7 +42,7 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({connected, address, connectWallet, disconnectWallet}) {
     const [value, setValue] = React.useState(0);
     React.useEffect(()=>{
         
@@ -75,6 +75,10 @@ export default function RecipeReviewCard() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const callfunction = ()=>{
+    alert("Under process");
+  }
   return (
     
     <Box container  className='option_main' sx={{ flexGrow: 1 , width: '88%', margin: '0 auto', padding: '0px 30px' }}>
@@ -226,9 +230,26 @@ export default function RecipeReviewCard() {
           </Typography>
           </Box>
         </Box>
-        <Button fullWidth variant="contained" className="connect_btn " startIcon={<AccountBalanceWalletIcon />}>
+        {/* <Button fullWidth variant="contained" className="connect_btn " startIcon={<AccountBalanceWalletIcon />}>
             Connect Wallet
-          </Button>
+          </Button> */}
+              {!address ? (
+        <Button
+          variant="contained"
+          className="connect_btn "
+          startIcon={<AccountBalanceWalletIcon />}
+          onClick={connectWallet}
+        >
+          Connect Wallet
+        </Button>
+      ) : (
+        <div>
+            <Button variant="contained" className="connect_btn " onClick={callfunction}>
+              Buy option
+            </Button>
+        </div>
+      )}
+
           <Stack
               direction="row"
               justifyContent="center"
