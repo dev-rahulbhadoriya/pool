@@ -77,7 +77,7 @@ export default function RecipeReviewCard() {
   };
   return (
     
-    <Box container  className='option_main' sx={{ flexGrow: 1 , width: '1300px', margin: '0 auto', padding: '0px 30px' }}>
+    <Box container  className='option_main' sx={{ flexGrow: 1 , width: '88%', margin: '0 auto', padding: '0px 30px' }}>
       <Stack
               direction="row"
               justifyContent="space-between"
