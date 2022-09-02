@@ -9,9 +9,9 @@ import LoginIcon from "@mui/icons-material/Login";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import {shortenAddress} from "../../utils/stylish"
 
-const Navbar = ({connected, address, connectWallet, disconnectWallet}) => {
+const Navbar = ({connected, address, connectWallet, disconnectWallet, networkId}) => {
   const { dispatch } = useContext(DarkModeContext);
-
+    
   return (
     <div className="navbar" >
       <div className="wrapper" aria-label="sticky table">
@@ -20,7 +20,8 @@ const Navbar = ({connected, address, connectWallet, disconnectWallet}) => {
             {/* <Button variant="outlined" className="dropdown_btn" startIcon={<DeleteIcon />}>
             <span>Chain</span><span style={{ color: "red"}}>Unsupported</span>
           </Button> */}
-            <DialogBox />
+            <DialogBox networkId={networkId} 
+            connectWallet = {connectWallet}/>
             <div>
             {!address ? (
         <Button

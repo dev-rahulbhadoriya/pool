@@ -96,7 +96,14 @@ export function useConnectWallet() {
     connectWallet: boundAction,
   };
 }
-
+export const actnType = {
+  NTWRK: "netwrk",
+};
+//network
+export function netwrk(payload) {
+  console.log("@@@@action", payload);
+  return { type: actnType.NTWRK, payload };
+}
 export function reducer(state, action) {
   switch (action.type) {
     case HOME_CONNECT_WALLET_BEGIN:
