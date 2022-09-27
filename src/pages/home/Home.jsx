@@ -22,13 +22,17 @@ useEffect(() => {
   }
 }, [web3Modal, connectWallet]);
 
+
+
 const connectWalletCallback = useCallback(() => {
   connectWallet(web3Modal);
 }, [web3Modal, connectWallet]);
 
+
 const disconnectWalletCallback = useCallback(() => {
   disconnectWallet(web3, web3Modal);
 }, [web3, web3Modal, disconnectWallet]);
+
 
   return (
     <div className="home">
@@ -37,7 +41,8 @@ const disconnectWalletCallback = useCallback(() => {
         <Navbar  address={address}
           connected={connected}
           connectWallet={connectWalletCallback}
-          disconnectWallet={disconnectWalletCallback}/>
+          disconnectWallet={disconnectWalletCallback}
+          networkId = {networkId}/>
        <div className="wrapper_inner">
           <Options  address={address}
           connected={connected}

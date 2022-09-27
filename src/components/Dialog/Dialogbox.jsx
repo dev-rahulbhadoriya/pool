@@ -17,6 +17,9 @@ import Grid from '@mui/material/Grid';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import Icon from "react-crypto-icons";
+import getWeb3 from '../../utils/web3Utils';
+import {netwrk} from '../../utils/web3Modal/connectWallet'
+import { useDispatch } from 'react-redux';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -56,15 +59,17 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
-  const [open, setOpen] = React.useState(false);
-
+export default function CustomizedDialogs({networkId,connectWallet}) {
+  const [open, setOpen] = React.useState(false);  
+  const dispatch = useDispatch()
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -72,6 +77,11 @@ export default function CustomizedDialogs() {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
+
+  const connectToWallet = ()=>{
+     // alert('hello i am network')
+     dispatch(netwrk(5))
+  }
 
   return (
     <div>
@@ -90,12 +100,12 @@ export default function CustomizedDialogs() {
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             <Grid item xs={2} sm={4} md={4}>
-                <Item> <Icon name="BTC" size={40} sx={{ mr: 2}} position="start"/>
+                <Item onClick={connectToWallet}> <Icon name="BTC" size={40} sx={{ mr: 2}} position="start"/>
                 <p>Ethereum </p> </Item>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
                 <Item> <Icon name="BNB" size={40} sx={{ mr: 2}} position="start"/>
-                <p>Ethereum </p> 
+                <p>BNB</p> 
               </Item>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
