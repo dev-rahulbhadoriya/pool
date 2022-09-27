@@ -31,6 +31,16 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Icon from "react-crypto-icons";
+import Web3 from 'web3'
+import hegicMainnet from '../../abi/hegicMainnet.json'
+import {addressHegicDemo, addressHegicMainnet, addressUSDCMainnet} from '../../abi/addressPool'
+import abiUSDC from '../../abi/abiFile/abiUSDCERC20.json'
+import abiHegicWETHPUT  from '../../abi/abiFile/abiHegicWETHPUT.json' 
+import abiHegicWETHCALL from '../../abi/abiFile/abiHegicWETHCALL.json'
+import abiFacade  from '../../abi/abiFile/abiFacade.json' 
+import fromExponential from 'from-exponential'
+import {USDC,Facade,HegicWETHPUT,HegicWETHCALL,WETH} from '../../abi/addressTestnet'
+import {BigNumber as BN, ethers, Signer} from "ethers"
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -75,9 +85,50 @@ export default function RecipeReviewCard({connected, address, connectWallet, dis
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const callHegic = async () => {
+    if (address && window.ethereum) {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        let userwalletaddresss = accounts[0];
+        console.log("ACCOUTNS", userwalletaddresss);
+        window.web3 = new Web3(window.ethereum);
+        let swaping = new window.web3.eth.Contract(abiUSDC,USDC)
+            console.log("@@@@@@@",swaping);
+        let d  = await swaping.methods.approve(Facade, ethers.constants.MaxUint256).send({ from: userwalletaddresss })
+        // let d = await swaping.methods.mintTo(Facade, ethers.constants.MaxUint256).send({ from: userwalletaddresss })
+            console.log("@@@",d);
+        // let z  = await swaping.methods.approve(HegicWETHPUT, ethers.constants.MaxUint256).send({ from: userwalletaddresss })
+        // console.log("@@@",z);
+       // let m = await swaping.methods.approve(Facade, 1000).send({ from: userwalletaddresss })  
+    }
+}
+  const callFacade = async()=>{
+//    alert("Under process");
 
-  const callfunction = ()=>{
-    alert("Under process");
+    if (address && window.ethereum) {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      let userwalletaddresss = accounts[0];
+      console.log("ACCOUTNS", userwalletaddresss);
+      window.web3 = new Web3(window.ethereum);
+      let facadTnx = new window.web3.eth.Contract(abiFacade,Facade)
+          console.log("@@@@@@@",facadTnx);
+
+      // let amountInexp = window.web3.utils.toBN(fromExponential(((parseFloat(1336.65)) * Math.pow(6, 18))));
+      //   console.log("amountInexp",amountInexp);
+      const amount = Web3.utils.toWei('0.03', 'ether');
+      let time  = 24*3600 // 1 day    
+      //const strikePrice = Web3.utils.fromWei('1336.65');
+       //const strike = Web3.utils.fromWei('1331')
+     //  const acceptablePrice = Web3.utils.toWei('1635','ether')
+      // console.log('====================================');
+      // console.log("strikePrice",strikePrice,acceptablePrice); 
+      // console.log('====================================');
+     let d  = await facadTnx.methods.createOption(HegicWETHCALL,time,amount,132111731807,[USDC,WETH],2816319 ).send({ from: userwalletaddresss })
+      // let d = await swaping.methods.mintTo(Facade, ethers.constants.MaxUint256).send({ from: userwalletaddresss })
+         console.log("@@@",d);
+      // let z  = await swaping.methods.approve(HegicWETHPUT, ethers.constants.MaxUint256).send({ from: userwalletaddresss })
+      // console.log("@@@",z);
+     // let m = await swaping.methods.approve(Facade, 1000).send({ from: userwalletaddresss })  
+  }
   }
   return (
     
@@ -243,11 +294,18 @@ export default function RecipeReviewCard({connected, address, connectWallet, dis
           Connect Wallet
         </Button>
       ) : (
-        <div>
-            <Button variant="contained" className="connect_btn " onClick={callfunction}>
-              Buy option
-            </Button>
-        </div>
+           <div>
+              <div>
+              <Button variant="contained" className="connect_btn " onClick={callHegic}>
+                Buy option
+              </Button>
+              </div>
+              <div>
+              <Button variant="contained" className="connect_btn " onClick={callFacade}>
+                Call Facade
+              </Button>
+              </div>
+         </div>
       )}
 
           <Stack

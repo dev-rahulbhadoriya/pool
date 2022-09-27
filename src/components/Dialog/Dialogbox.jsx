@@ -18,7 +18,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import Icon from "react-crypto-icons";
 import getWeb3 from '../../utils/web3Utils';
-import {netwrk} from '../../utils/web3Modal/connectWallet'
+import {networkChangeId} from '../../utils/web3Modal/networkChange'
 import { useDispatch } from 'react-redux';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -60,6 +60,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs({networkId,connectWallet}) {
+
   const [open, setOpen] = React.useState(false);  
   const dispatch = useDispatch()
   
@@ -79,8 +80,8 @@ export default function CustomizedDialogs({networkId,connectWallet}) {
   }));
 
   const connectToWallet = ()=>{
+    dispatch(networkChangeId(1));
      // alert('hello i am network')
-     dispatch(netwrk(5))
   }
 
   return (

@@ -9,6 +9,7 @@ import {
   HOME_NETWORK_CHANGED,
 } from "./constants";
 import { disconnectWallet } from "./actions";
+import { chanegeNetwork } from "./networkChange";
 
 export function connectWallet(web3Modal) {
   return async (dispatch) => {
@@ -46,6 +47,7 @@ export function connectWallet(web3Modal) {
           const networkId = web3.utils.isHex(chainId)
             ? web3.utils.hexToNumber(chainId)
             : chainId;
+            dispatch(chanegeNetwork(chainId));
           dispatch({ type: HOME_NETWORK_CHANGED, data: networkId });
         });
       };
@@ -96,14 +98,8 @@ export function useConnectWallet() {
     connectWallet: boundAction,
   };
 }
-export const actnType = {
-  NTWRK: "netwrk",
-};
-//network
-export function netwrk(payload) {
-  console.log("@@@@action", payload);
-  return { type: actnType.NTWRK, payload };
-}
+
+
 export function reducer(state, action) {
   switch (action.type) {
     case HOME_CONNECT_WALLET_BEGIN:
