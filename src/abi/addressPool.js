@@ -1,3 +1,5 @@
+
+
 export const addressHegicDemo = "0x50d1489Bc3063780463ec66742e35ae0082Df896"
 
 
