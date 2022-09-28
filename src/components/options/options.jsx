@@ -297,12 +297,12 @@ export default function RecipeReviewCard({connected, address, connectWallet, dis
            <div>
               <div>
               <Button variant="contained" className="connect_btn " onClick={callHegic}>
-                Buy option
+                Approve
               </Button>
               </div>
               <div>
               <Button variant="contained" className="connect_btn " onClick={callFacade}>
-                Call Facade
+                Buy
               </Button>
               </div>
          </div>
