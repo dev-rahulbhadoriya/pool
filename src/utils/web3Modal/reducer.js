@@ -1,7 +1,6 @@
 import { reducer as connectWalletReducer } from "./connectWallet";
 import { reducer as disconnectWalletReducer } from "./disconnectWallet";
-
-import { actnType } from "./connectWallet";
+import {actnType} from "./networkChange"
 
 const reducers = [connectWalletReducer, disconnectWalletReducer];
 
@@ -15,11 +14,12 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    case actnType.NTWRK:
+    case  actnType.networkChange:
+      console.log("@@@",action.payload);
       return {
         ...state,
-        ...{ networkId: action.payload },
-      };
+        ...{networkId : action.payload}
+      }
     // Handle cross-topic actions here
     default:
       newState = state;
@@ -28,3 +28,20 @@ export default function reducer(state = initialState, action) {
   /* istanbul ignore next */
   return reducers.reduce((s, r) => r(s, action), newState);
 }
+
+// export default function reducer(state = initialState, action) {
+//   let newState;
+//   switch (action.type) {
+//     case actnType.NTWRK:
+//       return {
+//         ...state,
+//         ...{ networkId: action.payload },
+//       };
+//     // Handle cross-topic actions here
+//     default:
+//       newState = state;
+//       break;
+//   }
+//   /* istanbul ignore next */
+//   return reducers.reduce((s, r) => r(s, action), newState);
+// }

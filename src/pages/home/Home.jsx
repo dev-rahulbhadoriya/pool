@@ -12,6 +12,8 @@ useConnectWallet();
 const { disconnectWallet } = useDisconnectWallet();
 const [web3Modal, setModal] = useState(null);
 
+console.log("network Id @@@",networkId);
+
 useEffect(() => {
   setModal(createweb3Modal);
 }, [setModal]);
@@ -33,6 +35,9 @@ const disconnectWalletCallback = useCallback(() => {
   disconnectWallet(web3, web3Modal);
 }, [web3, web3Modal, disconnectWallet]);
 
+const changeNetwork = useCallback(() => {
+  connectWallet(web3, networkId);
+}, [web3, web3Modal, disconnectWallet]);
 
   return (
     <div className="home">
